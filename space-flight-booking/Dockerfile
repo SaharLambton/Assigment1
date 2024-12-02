@@ -1,7 +1,8 @@
 FROM node:14
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install && npm list
 COPY . .
-RUN npm run build
+RUN npx tsc
+EXPOSE 3000
 CMD ["node", "dist/app.js"]
